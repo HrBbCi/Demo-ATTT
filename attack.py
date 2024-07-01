@@ -8,7 +8,7 @@ import pywt
 import os
 from skimage.metrics import structural_similarity as ssim
 
-# 攻击
+
 
 def add_gaussian_noise(image, mean=0, sigma=25):
     row, col = image.shape
@@ -21,7 +21,7 @@ def add_gaussian_noise(image, mean=0, sigma=25):
 #salt pepper
 def add_salt_pepper_noise(image, prob=0.05):
     noisy_image = np.copy(image)
-    # 添加椒鹽噪聲
+
     num_salt = np.ceil(prob * image.size * 0.5)
     coords = [np.random.randint(0, i - 1, int(num_salt)) for i in image.shape]
     noisy_image[coords[0], coords[1]] = 255
@@ -33,14 +33,14 @@ def add_salt_pepper_noise(image, prob=0.05):
 
 # W = add_salt_pepper_noise(W)
 
-# 定義一個高通濾波器函數
+
 def high_pass_filter(image, kernel_size=3):
     blurred = cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
     return cv2.addWeighted(image, 1.5, blurred, -0.5, 0)
 
 # W = high_pass_filter(W)
 
-# 定義一個均值濾波器函數
+
 def mean_filter(image, kernel_size=3):
     return cv2.blur(image, (kernel_size, kernel_size))
 
@@ -111,7 +111,7 @@ for i in range(len(watered_pictures)):
     I = cv2.resize(I, (M, M))
     I = cv2.cvtColor(I, cv2.COLOR_BGR2RGB)
     I = cv2.cvtColor(I, cv2.COLOR_RGB2GRAY)
-    G = cv2.imread("/home/kienbt/Downloads/ptit.png")  # 浮水印(watermark)
+    G = cv2.imread("ptit.png")  # 浮水印(watermark)
     G = cv2.resize(G, (N, N))
     G = cv2.cvtColor(G, cv2.COLOR_BGR2RGB)
     G = cv2.cvtColor(G, cv2.COLOR_RGB2GRAY)
@@ -278,7 +278,7 @@ for i in range(len(watered_pictures)):
 #     for file in files:
 #         watered_pictures.append(file)
 #
-# G = cv2.imread("7.1.03.tiff")  # 浮水印(watermark)
+# G = cv2.imread("7.1.03.tiff")  #
 # G = cv2.resize(G, (N, N))
 # G = cv2.cvtColor(G, cv2.COLOR_BGR2RGB)
 # G = cv2.cvtColor(G, cv2.COLOR_RGB2GRAY)
@@ -308,7 +308,7 @@ for i in range(len(watered_pictures)):
 #     return nc_val
 #
 #
-# # 使用函數
+
 # nc_value = calculate_histograms_and_nc(G, A)
 # print('The NC value between the two images is:', nc_value)
 #
@@ -321,10 +321,10 @@ for i in range(len(watered_pictures)):
 #     return 20 * math.log10(PIXEL_MAX / math.sqrt(mse))
 #
 #
-# # 計算 PSNR
+
 # psnr_val = psnr(G, A)
 #
-# # 顯示 PSNR 值
+
 # print('The PSNR value is: ', psnr_val)
 #
 #
@@ -333,7 +333,7 @@ for i in range(len(watered_pictures)):
 #     return ssim_value
 #
 #
-# # 使用函數
+
 # ssim_value = calculate_ssim(G, A, win_size=7)
 # print('The SSIM value between the two images is', ssim_value, '.')
 #
@@ -350,7 +350,7 @@ for i in range(len(watered_pictures)):
 #
 #
 # bert_value = calculate_bert(G, A)
-# print(f"BERT值為: {bert_value * 100}%")
+# print(f"BERT: {bert_value * 100}%")
 #
 #
 # def calculate_mse(image1, image2):
@@ -361,6 +361,6 @@ for i in range(len(watered_pictures)):
 #     return mse
 #
 #
-# # 舉例
+
 # mse_value = calculate_mse(G, A)
-# print(f"MSE 值為: {mse_value}")
+# print(f"MSE : {mse_value}")
