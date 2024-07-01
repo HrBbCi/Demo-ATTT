@@ -58,7 +58,6 @@ coverage.xml
 .pytest_cache/
 
 benchmark/linux_x86-64_benchmark_model_plus_flex
-extract1.py
 embed1.py
 test1.py
 test2.py
